@@ -108,14 +108,17 @@ def convert_file(file_path, bpm, lenght=10000):
 
     :param file_path: path to dxf file
     :param bpm: bpm setting in the beatmap
-    :param lenght: the lenght setting from your map json, probably optional
+    :param lenght: the lenght for the map json, not actually used
     :return: string of Synth Riders formatted json
     '''
-    base_json = synth_json_template(bpm, lenght)
 
     walls_list = read_dxf_walls(file_path)
-
     num_walls = len(walls_list)
+
+    lenght = num_walls * 18.75 / bpm
+
+    base_json = synth_json_template(bpm, lenght)
+
 
     for i in range(num_walls):
         dest_list = walls_list[i]["dest_list"]

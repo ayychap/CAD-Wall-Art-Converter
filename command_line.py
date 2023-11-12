@@ -4,7 +4,7 @@ from src.sr_cad_walls.utils import convert_file
 
 
 def main(inputs):
-    json_output = convert_file(inputs.file, inputs.bpm, lenght=inputs.l)
+    json_output = convert_file(inputs.file, inputs.bpm)
 
     file_path = Path(inputs.file)
     folder = file_path.parent
@@ -27,8 +27,8 @@ if __name__ == "__main__":
     parser.add_argument("file", type=str,
                         help="Path to your .dxf file, your json output will also be saved to this directory")
     parser.add_argument("bpm", type=float, help="BPM setting in the beatmap editor")
-    parser.add_argument("-l", metavar="--lenght", type=int, nargs='?', const=10000,
-                        help="optional 'lenght' value from your beatmap json, probably not necessary except for extremely large files")
+    # parser.add_argument("-l", metavar="--lenght", type=int, nargs='?', const=10000,
+    #                     help="optional 'lenght' value from your beatmap json, probably not necessary except for extremely large files")
 
     args = parser.parse_args()
 
