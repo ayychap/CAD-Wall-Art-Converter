@@ -1,0 +1,4 @@
+python~=3.10
+ezdxf~=1.1.0
+numpy~=1.26.0
+synth-mapping-helper~=1.3
