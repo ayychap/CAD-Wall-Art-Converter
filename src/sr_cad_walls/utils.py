@@ -68,23 +68,23 @@ def read_dxf_walls(file_path):
             # Get the rotation of the block
             rotation = block_ref.dxf.rotation
 
-            match name:
-                case "TRIANGLE":
-                    slide_type = 102
-                case "SQUARE":
-                    slide_type = 101
-                case "CENTER":
-                    slide_type = 3
-                case "ANGLE_RIGHT":
-                    slide_type = 2
-                case "ANGLE_LEFT":
-                    slide_type = 4
-                case "LEFT":
-                    slide_type = 1
-                case "RIGHT":
-                    slide_type = 0
-                case "CROUCH":
-                    slide_type = 100
+            if "TRIANGLE" in name:
+                slide_type = 102
+            elif "SQUARE" in name:
+                slide_type = 101
+            elif "CENTER" in name:
+                slide_type = 3
+            # ORDER MATTERS! Check these two before LEFT and RIGHT
+            elif "ANGLE_RIGHT" in name:
+                slide_type = 2
+            elif "ANGLE_LEFT" in name:
+                slide_type = 4
+            elif "LEFT" in name:
+                slide_type = 1
+            elif "RIGHT" in name:
+                slide_type = 0
+            elif "CROUCH" in name:
+                slide_type = 100
 
             wall_vector = np.array([[coord[0], coord[1], 0, slide_type, rotation]])
 
